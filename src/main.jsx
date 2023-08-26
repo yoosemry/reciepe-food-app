@@ -6,31 +6,31 @@ import { RouterProvider, createBrowserRouter  } from 'react-router-dom'
 import About from './pages/About.jsx'
 import Home from './pages/Home.jsx';
 
-import GlobalProvider from './content/ContentApp'
+import GlobalProvider from './content/ContentApp';
 
 
-const routPages = createBrowserRouter([
-  {
-    path : '/',
-    element: <App/>,
-    Children : [
+
+
+const routerProvider = createBrowserRouter([
+	{
+		path: "/",
+		element: <App />,
+		children: [
+			{
+				index: true,
+				element: <Home />,
+			},
+			{
+				path: "/home",
+				element: <Home />,
+			},
       {
-        index : true,
-        element : <Home/>
-
-      },
-      {
-        path : '/about',
-        element : <About/>
-      },
-      {
-        path : '/home',
-        element : <Home/>
-      }
-
-    ]
-  }
-])
+				path: "/about",
+				element: <About />,
+			}
+		],
+	},
+]);
 
 
 
@@ -38,7 +38,7 @@ const routPages = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <GlobalProvider>
-    <RouterProvider router={routPages} />
+    <RouterProvider router={routerProvider} />
     </GlobalProvider>
     
 
