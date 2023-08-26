@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer utilities {
+    .mygradient{
+     @apply bg-gradient-to-r from-yellow-200 to-red-200;
+    }
+  }

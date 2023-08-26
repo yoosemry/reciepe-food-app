@@ -17,7 +17,7 @@ const App = () => {
   
   return (
 
-    <div className="h-full xl:max-w-5xl m-0 xl:mx-auto xl:my-10 shadow-sm bg-slate-400">
+    <div className="h-full xl:max-w-6xl m-0 xl:mx-auto xl:my-10 shadow-md bg-white rounded-md">
       <Header/>
       <Outlet/>
       <Footer/>
