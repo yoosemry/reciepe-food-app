@@ -7,6 +7,7 @@ import About from './pages/About.jsx'
 import Home from './pages/Home.jsx';
 
 import GlobalProvider from './content/ContentApp';
+import SingleFood from './pages/SingleFood.jsx'
 
 
 
@@ -23,6 +24,10 @@ const routerProvider = createBrowserRouter([
 			{
 				path: "/home",
 				element: <Home />,
+			},
+			{
+				path: "/:id",
+				element: <SingleFood />,
 			},
       {
 				path: "/about",

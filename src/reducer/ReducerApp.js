@@ -1,7 +1,6 @@
 export const myState = {
-    posts : [],
-
-    name : 'yoose'
+    bookmark : [],
+    search : ''
 
 }
 
@@ -10,12 +9,26 @@ const foodReducuer = (state , action)=>{
     const {type , payload} = action;
 
     switch (type) {
-        case 'ADD_NEW_ITEM' :
+
+        case 'SEARCH':
             return{
                 ...state,
-                name : payload.name
+                search: payload.search
+            }
+
+
+        case 'ADD_BOOKMARK':
+            return{
+                ...state,
+                bookmark : payload.bookmark
 
             }
+
+            case 'REMOVE_BOOKMARK':
+                return {
+                    ...state,
+                    bookmark: payload.bookmark
+                }
                
    
         default:
