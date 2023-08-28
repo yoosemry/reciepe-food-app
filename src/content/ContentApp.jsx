@@ -7,12 +7,23 @@ const GlobalProvider = ({children})=>{
     const [state, dispatch] =  useReducer(foodReducuer,myState)
 
     const addNewItem = ()=>{
-        return console.log('asc walalka')
+        return console.log('addNewItem')
+    }
+
+    const searchFun = (input)=>{
+        let updatedata = {...state}
+
+        updatedata.search = input;
+            dispatch({type :'SEARCH' , payload :{
+                search : updatedata
+            }})
+           
     }
 
     let value = {
         addNewItem,
-        state
+        state,
+        searchFun
     }
 
     return (
