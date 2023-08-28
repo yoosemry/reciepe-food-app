@@ -1,25 +1,37 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import useApp from '../hook/useApp';
 
 const Side = () => {
   const [foods, setFoods] = useState(null);
   const [loading, setLoading] = useState(false);
+  const {state} = useApp();
 
+  console.log(state.search)
    let {id} = useParams();
   
   const navicate = useNavigate();
 
   useEffect(()=>{
-    const searchDataFetch = async()=>{
+
+    const searchDataFetch = async(search)=>{
       try {
         setLoading(true)
-        const {data} = await axios.get(`https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza`)
+        const {data} = await axios.get(`https://forkify-api.herokuapp.com/api/v2/recipes?search=${search}`)
        
-         const {recipes} = data.data;
+         let {recipes} = data.data;
+       
+         if(recipes.length < 1 ){
+          setLoading(false)
+          setFoods('');
+         }else{
 
-        setFoods(recipes);
-        setLoading(false)
+          setFoods(recipes);
+          setLoading(false)
+         }
+          
+
 
       } catch (error) {
         setLoading(false)
@@ -28,9 +40,10 @@ const Side = () => {
       }
     }
 
-    searchDataFetch();
+    searchDataFetch(state.search);
 
-  },[]);
+
+  },[state]);
 
   if(!foods) return <h1>loading</h1>
 
@@ -39,7 +52,7 @@ const Side = () => {
     <div className=' sm:hidden lg:flex grow-0 w-[20rem]  bg-white'>
 
       <div className='flex  flex-col w-full my-4'>
-{foods.map((myItems,index)=>{
+      {foods.map((myItems,index)=>{
     return(
 
       <div key={index} onClick={()=>  navicate(`/${myItems.id}`)} className='hover:bg-slate-50 duration-200 ease-in h-fit w-full flex items-center cursor-pointer'>

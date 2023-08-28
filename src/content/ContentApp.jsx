@@ -11,12 +11,9 @@ const GlobalProvider = ({children})=>{
     }
 
     const searchFun = (input)=>{
-        let updatedata = {...state}
+      
 
-        updatedata.search = input;
-            dispatch({type :'SEARCH' , payload :{
-                search : updatedata
-            }})
+            dispatch({type :'SEARCH' , payload: input})
            
     }
 

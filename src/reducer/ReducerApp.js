@@ -13,7 +13,7 @@ const foodReducuer = (state , action)=>{
         case 'SEARCH':
             return{
                 ...state,
-                search: payload.search
+                search: payload
             }
 
 

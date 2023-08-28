@@ -9,7 +9,7 @@ const Maincontent = () => {
   const [loading, setLoading] = useState(false);
 
   const {id} = useParams();
-
+console.log(id)
 
 
 
@@ -44,13 +44,15 @@ const Maincontent = () => {
 
     fetdata();
 
-  },[id])
+  },[id]);
 
-  if(!food) return <h1>Loading...</h1>
+
+   if(!food) return <h1></h1>
 
   return (
     <div className='grow bg-slate-50 px-4 py-2'>
-      
+    
+
       <div className='relative'>
 
     <img 
@@ -110,7 +112,7 @@ const Maincontent = () => {
       Please check out directions at their website.</p>
 <div className='flex justify-center m-6'>
 
-<Link to={food.url} className='flex items-center justify-center mygradient px-8 py-4 shadow-md rounded-xl text-white font-semibold '>
+<Link to={food.url} _Plank className='flex items-center justify-center mygradient px-8 py-4 shadow-md rounded-xl text-white font-semibold '>
 <span className='mr-4'>DIRECTIONS </span>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
   <path fillRule="evenodd" d="M16.72 7.72a.75.75 0 011.06 0l3.75 3.75a.75.75 0 010 1.06l-3.75 3.75a.75.75 0 11-1.06-1.06l2.47-2.47H3a.75.75 0 010-1.5h16.19l-2.47-2.47a.75.75 0 010-1.06z" clipRule="evenodd" />
